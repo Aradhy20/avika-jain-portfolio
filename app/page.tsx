@@ -18,6 +18,7 @@ import AmbientCanvas from "./components/AmbientCanvas";
 import ResumeModal from "./components/ResumeModal";
 import ScrollProgress from "./components/ScrollProgress";
 import CustomCursor from "./components/CustomCursor";
+import WhatsAppWidget from "./components/WhatsAppWidget";
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
@@ -95,6 +96,9 @@ export default function Home() {
         isOpen={resumeOpen}
         onClose={() => setResumeOpen(false)}
       />
+
+      {/* Floating WhatsApp Chatbot Widget */}
+      <WhatsAppWidget />
     </main>
   );
 }
