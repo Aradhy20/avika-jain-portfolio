@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
-import { ArrowDown, ArrowUpRight, Asterisk, Download, Sparkles, Send } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Asterisk, Download, Send } from "lucide-react";
 
 interface HeroProps {
   onOpenResume: () => void;
@@ -19,7 +19,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
   const reduceMotion = useReducedMotion();
   const [roleIndex, setRoleIndex] = useState(0);
 
-  // Rotate roles smoothly every 3 seconds
+  // Rotate roles smoothly every 3.2 seconds
   useEffect(() => {
     if (reduceMotion) return;
     const interval = setInterval(() => {
@@ -34,8 +34,8 @@ export default function Hero({ onOpenResume }: HeroProps) {
   const mouseY = useMotionValue(0);
 
   const springConfig = { damping: 25, stiffness: 180 };
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [8, -8]), springConfig);
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-8, 8]), springConfig);
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [7, -7]), springConfig);
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-7, 7]), springConfig);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (reduceMotion || !cardRef.current) return;
@@ -55,45 +55,25 @@ export default function Hero({ onOpenResume }: HeroProps) {
     <section className="hero section-wrap" id="top" aria-label="Hero Introduction">
       <div className="hero-left">
         {/* Availability Badge */}
-        <motion.div
-          className="availability"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-        >
+        <div className="availability">
           <span className="live-dot" />
           <span>AVAILABLE FOR SELECT OPPORTUNITIES</span>
           <span className="availability-year">2026</span>
-        </motion.div>
+        </div>
 
         {/* Eyebrow */}
-        <motion.p
-          className="eyebrow hero-eyebrow"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.25 }}
-        >
+        <p className="eyebrow hero-eyebrow">
           INDEPENDENT CREATIVE / MORADABAD, INDIA
-        </motion.p>
+        </p>
 
         {/* Main Staggered Headline */}
         <h1 className="hero-heading">
-          <motion.span
-            className="hero-firstname"
-            initial={{ y: 80, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          >
+          <span className="hero-firstname">
             Avika
-          </motion.span>
-          <motion.span
-            className="hero-surname"
-            initial={{ y: 80, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.35 }}
-          >
+          </span>
+          <span className="hero-surname">
             Jain<span className="hero-period">.</span>
-          </motion.span>
+          </span>
         </h1>
 
         {/* Animated Role Text Transition */}
@@ -103,10 +83,10 @@ export default function Hero({ onOpenResume }: HeroProps) {
             <motion.span
               key={roles[roleIndex]}
               className="role-text"
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.4 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.35 }}
             >
               {roles[roleIndex]}
             </motion.span>
@@ -115,22 +95,12 @@ export default function Hero({ onOpenResume }: HeroProps) {
         </div>
 
         {/* Introduction Copy */}
-        <motion.p
-          className="hero-copy"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.55 }}
-        >
+        <p className="hero-copy">
           I transform ideas into meaningful visual experiences through graphic design, digital products, branding and motion.
-        </motion.p>
+        </p>
 
         {/* CTA Buttons */}
-        <motion.div
-          className="hero-actions"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.7 }}
-        >
+        <div className="hero-actions">
           <a className="button button-dark" href="#work">
             <span>Explore My Work</span> <ArrowUpRight size={16} />
           </a>
@@ -145,7 +115,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
           <a className="text-link" href="#contact">
             <span>Let&apos;s Collaborate</span> <Send size={14} />
           </a>
-        </motion.div>
+        </div>
 
         {/* Scroll Indicator */}
         <div className="hero-foot">
@@ -175,9 +145,6 @@ export default function Hero({ onOpenResume }: HeroProps) {
         <motion.div
           className="portrait-frame"
           style={reduceMotion ? {} : { rotateX, rotateY, transformPerspective: 1000 }}
-          initial={{ clipPath: "inset(0 0 100% 0)", scale: 1.04 }}
-          animate={{ clipPath: "inset(0 0 0% 0)", scale: 1 }}
-          transition={{ duration: 1.1, delay: 0.25, ease: [0.77, 0, 0.18, 1] }}
         >
           <div className="portrait-image">
             {/* Real verified portrait artwork of Avika Jain */}
@@ -185,6 +152,12 @@ export default function Hero({ onOpenResume }: HeroProps) {
               src="/avika-showcase.jpg"
               alt="Avika Jain — Graphic Designer, UI/UX & Product Designer, Video Editor"
               loading="eager"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (!target.src.endsWith("/avika-profile.jpeg")) {
+                  target.src = "/avika-profile.jpeg";
+                }
+              }}
             />
           </div>
         </motion.div>
@@ -235,7 +208,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
           animate={reduceMotion ? {} : { y: [0, -5, 0] }}
           transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
         >
-          <span className="tool-dot ps" /> PS · AI · FIGMA
+          <span className="tool-dot ps" /> PS · AI · FIGMA · PR
         </motion.div>
 
         {/* Visual Caption */}
@@ -247,4 +220,3 @@ export default function Hero({ onOpenResume }: HeroProps) {
     </section>
   );
 }
-

@@ -82,6 +82,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         <StructuredData />
+        <link rel="preload" as="image" href="/avika-showcase.jpg" fetchPriority="high" />
       </head>
       <body>{children}</body>
     </html>

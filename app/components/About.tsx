@@ -20,6 +20,12 @@ export default function About() {
                 src="/avika-showcase.jpg"
                 alt="Avika Jain — Independent Designer & Visual Storyteller"
                 loading="lazy"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.endsWith("/avika-profile.jpeg")) {
+                    target.src = "/avika-profile.jpeg";
+                  }
+                }}
               />
             </div>
             <div className="about-photo-caption">
