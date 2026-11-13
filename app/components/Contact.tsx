@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Send, Check, ArrowUpRight, Linkedin, Instagram, Asterisk, Sparkles, Clock, MapPin, Copy } from "lucide-react";
+import { Mail, Send, Check, ArrowUpRight, Linkedin, Instagram, Asterisk, Sparkles, Clock, MapPin, DollarSign } from "lucide-react";
 
 export default function Contact() {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    subject: "Freelance Project",
+    subject: "Brand Identity",
+    budget: "$500 – $1,500 (Project-Based)",
     message: ""
   });
   const [sending, setSending] = useState(false);
@@ -29,9 +30,9 @@ export default function Contact() {
 
     // Graceful fallback to mailto if EmailJS credentials are not configured
     if (!service || !template || !key) {
-      const emailSubject = encodeURIComponent(`Portfolio Inquiry [${form.subject}]: from ${form.name}`);
+      const emailSubject = encodeURIComponent(`Design Inquiry [${form.subject}]: from ${form.name}`);
       const emailBody = encodeURIComponent(
-        `Hi Avika,\n\n${form.message}\n\n---\nFrom: ${form.name}\nEmail: ${form.email}\nProject Type: ${form.subject}`
+        `Hi Avika,\n\n${form.message}\n\n---\nClient Name: ${form.name}\nEmail: ${form.email}\nProject Type: ${form.subject}\nEstimated Budget: ${form.budget}`
       );
       window.location.href = `mailto:avikajain1107@gmail.com?subject=${emailSubject}&body=${emailBody}`;
       setSent(true);
@@ -47,16 +48,16 @@ export default function Contact() {
         {
           from_name: form.name,
           reply_to: form.email,
-          subject: `Portfolio Inquiry [${form.subject}]: from ${form.name}`,
-          message: `${form.message}\n\nProject Type: ${form.subject}`,
+          subject: `Design Inquiry [${form.subject}]: from ${form.name}`,
+          message: `${form.message}\n\nProject Type: ${form.subject}\nBudget: ${form.budget}`,
         },
         { publicKey: key }
       );
       setSent(true);
-      setForm({ name: "", email: "", subject: "Freelance Project", message: "" });
+      setForm({ name: "", email: "", subject: "Brand Identity", budget: "$500 – $1,500 (Project-Based)", message: "" });
     } catch {
       // Fallback on error
-      const emailSubject = encodeURIComponent(`Portfolio Inquiry [${form.subject}]: from ${form.name}`);
+      const emailSubject = encodeURIComponent(`Design Inquiry [${form.subject}]: from ${form.name}`);
       const emailBody = encodeURIComponent(
         `Hi Avika,\n\n${form.message}\n\n---\nFrom: ${form.name}\nEmail: ${form.email}`
       );
@@ -71,22 +72,22 @@ export default function Contact() {
       <div className="section-wrap contact-grid">
         {/* Left Column: Details & Fast Channels */}
         <div className="contact-info-col">
-          <p className="eyebrow">07 / HAVE A GOOD ONE IN MIND?</p>
+          <p className="eyebrow">08 / LET&apos;S TALK</p>
           <h2 className="contact-heading">
-            Have a creative project in mind?
+            Have a creative vision?
             <br />
-            <em>Let&apos;s make it happen.</em>
+            <em>Let&apos;s bring it to life.</em>
           </h2>
 
           <p className="contact-copy">
-            Whether you have a full-time role, a freelance brand brief, an intuitive digital product to design, or simply want to say hello — I would love to hear what you are envisioning.
+            Whether you need a fresh brand identity, editorial layout, striking social media assets, a short-form video edit, or want to discuss a full-time role — let&apos;s connect.
           </p>
 
           <div className="contact-details">
             <a
               href="mailto:avikajain1107@gmail.com"
               className="contact-card-link"
-              title="Send email directly"
+              title="Send direct email"
             >
               <div className="contact-card-icon">
                 <Mail size={18} />
@@ -124,13 +125,13 @@ export default function Contact() {
             </div>
             <div className="meta-pill">
               <MapPin size={13} />
-              <span>Moradabad, India · Remote Worldwide</span>
+              <span>Moradabad, India · Open to Remote &amp; Relocation</span>
             </div>
           </div>
 
           {/* Social Profiles */}
           <div className="socials-wrapper">
-            <span className="socials-label">EXPLORE PROFILES</span>
+            <span className="socials-label">VERIFIED PROFILES</span>
             <div className="socials">
               <a
                 href="https://www.linkedin.com/in/avika-jain-designer"
@@ -149,6 +150,14 @@ export default function Contact() {
                 <Asterisk size={18} />
               </a>
               <a
+                href="https://www.instagram.com/avikajain.design"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram Profile"
+              >
+                <Instagram size={18} />
+              </a>
+              <a
                 href="https://github.com/Aradhy20/avika-jain-portfolio"
                 target="_blank"
                 rel="noreferrer"
@@ -163,7 +172,7 @@ export default function Contact() {
         {/* Right Column: Premium Contact Form */}
         <form className="contact-form" onSubmit={handleSubmit} aria-label="Send direct message">
           <div className="form-eyebrow">
-            <span>DIRECT INQUIRY</span>
+            <span>PROJECT INQUIRY FORM</span>
             <span className="sparkle-icon">✳</span>
           </div>
 
@@ -195,26 +204,45 @@ export default function Contact() {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="contact-subject">Project or Inquiry Type</label>
-            <select
-              id="contact-subject"
-              value={form.subject}
-              onChange={(e) => setForm({ ...form, subject: e.target.value })}
-              className="contact-select"
-            >
-              <option value="Freelance Project">Freelance Creative Project</option>
-              <option value="Full-Time Role">Full-Time Job Opportunity</option>
-              <option value="Brand Identity">Brand Identity System</option>
-              <option value="UI/UX Design">UI/UX &amp; Product Design</option>
-              <option value="Video Editing">Video &amp; Motion Editing</option>
-              <option value="General Hello">General Hello / Design Chat</option>
-            </select>
+          <div className="form-row-2">
+            <div className="form-group">
+              <label htmlFor="contact-subject">Project Category</label>
+              <select
+                id="contact-subject"
+                value={form.subject}
+                onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                className="contact-select"
+              >
+                <option value="Brand Identity">Brand Identity &amp; Logo</option>
+                <option value="Graphic Design">Graphic &amp; Editorial Design</option>
+                <option value="Poster Design">Poster &amp; Flyer Design</option>
+                <option value="Social Media">Social Media Creative Kit</option>
+                <option value="Video Editing">Video &amp; Motion Editing</option>
+                <option value="Full-Time Role">Full-Time Career Opportunity</option>
+                <option value="General Hello">General Hello / Creative Chat</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="contact-budget">Estimated Budget</label>
+              <select
+                id="contact-budget"
+                value={form.budget}
+                onChange={(e) => setForm({ ...form, budget: e.target.value })}
+                className="contact-select"
+              >
+                <option value="Flexible / Negotiable">Flexible / To Be Discussed</option>
+                <option value="Under $500">Under $500 (Small sprint)</option>
+                <option value="$500 – $1,500">$500 – $1,500 (Project-based)</option>
+                <option value="$1,500 – $3,000">$1,500 – $3,000 (Complete system)</option>
+                <option value="Full-Time Salary">Full-Time Salary Discussion</option>
+              </select>
+            </div>
           </div>
 
           <div className="form-group">
             <label htmlFor="contact-message">
-              Tell me a little about it <span className="req">*</span>
+              Project Vision &amp; Details <span className="req">*</span>
             </label>
             <textarea
               id="contact-message"
@@ -222,7 +250,7 @@ export default function Contact() {
               rows={4}
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
-              placeholder="Describe your vision, timeline, goals, or role..."
+              placeholder="Tell me about your brand, audience, goals, or role..."
             />
           </div>
 
@@ -232,7 +260,7 @@ export default function Contact() {
             disabled={sending}
           >
             <span>
-              {sent ? "Message Prepared & Sent" : sending ? "Sending..." : "Send Your Message"}
+              {sent ? "Message Prepared & Sent" : sending ? "Sending..." : "Submit Inquiry"}
             </span>
             {sent ? <Check size={16} /> : <ArrowUpRight size={16} />}
           </button>
@@ -250,4 +278,3 @@ export default function Contact() {
     </section>
   );
 }
-

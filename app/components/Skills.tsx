@@ -1,158 +1,134 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Palette, MonitorSmartphone, Clapperboard, Sparkles, Check, ArrowUpRight } from "lucide-react";
+import { Palette, Check, Sparkles, Globe, Cpu, Wrench } from "lucide-react";
 
-interface SkillCategory {
-  id: string;
-  label: string;
-  icon: typeof Palette;
-  description: string;
-  tools: {
-    name: string;
-    description: string;
-    verified: boolean;
-  }[];
+interface SoftwareSkill {
+  name: string;
+  category: string;
+  level: number;
+  note: string;
+  badge: string;
 }
 
-const skillCategories: SkillCategory[] = [
-  {
-    id: "graphic",
-    label: "Graphic Design",
-    icon: Palette,
-    description: "Visual communication, brand identities, editorial layouts, and high-impact marketing assets.",
-    tools: [
-      { name: "Adobe Photoshop", description: "Image compositing, retouching, poster design, and visual asset preparation.", verified: true },
-      { name: "Adobe Illustrator", description: "Vector iconography, custom brand marks, logotypes, and scalable artwork.", verified: true },
-      { name: "Canva", description: "Rapid content templates, modular social post kits, and presentations.", verified: true },
-      { name: "Typography", description: "Font pairing, optical hierarchy, editorial scale, and typographic harmony.", verified: true },
-      { name: "Layout Design", description: "Grid systems, baseline grids, negative space balance, and print specifications.", verified: true },
-      { name: "Brand Identity", description: "Color palettes, logo suites, asset lockups, and comprehensive brand books.", verified: true },
-      { name: "Visual Communication", description: "Translating complex narratives into clear, engaging visual compositions.", verified: true }
-    ]
-  },
-  {
-    id: "ux",
-    label: "Product & UX Design",
-    icon: MonitorSmartphone,
-    description: "Human-centered digital interfaces, user journeys, responsive web & mobile layouts, and scalable Figma systems.",
-    tools: [
-      { name: "Figma", description: "Component libraries, Auto-Layout 5.0, design tokens, and clickable prototypes.", verified: true },
-      { name: "Wireframing", description: "Translating user requirements into low-fidelity structural page architectures.", verified: true },
-      { name: "Prototyping", description: "Interactive micro-interactions, gestural states, and realistic flow walkthroughs.", verified: true },
-      { name: "User Flows", description: "Mapping frictionless paths from user entry to key conversion touchpoints.", verified: true },
-      { name: "Design Systems", description: "Atomic UI components, scalable token sets, and cross-platform style guides.", verified: true },
-      { name: "Responsive UI", description: "Pixel-disciplined adaptation across smartphone, tablet, and desktop viewports.", verified: true },
-      { name: "Usability Testing", description: "Heuristic evaluation, user feedback synthesis, and iterative UI refinement.", verified: true },
-      { name: "Accessibility (WCAG)", description: "Color contrast compliance (4.5:1+), accessible touch targets, and readable typography.", verified: true }
-    ]
-  },
-  {
-    id: "motion",
-    label: "Video & Motion",
-    icon: Clapperboard,
-    description: "Short-form video editing, kinetic motion typography, beat-matched social storytelling, and dynamic pacing.",
-    tools: [
-      { name: "Adobe Premiere Pro", description: "Timeline cutting, rhythm editing, multi-track audio sync, and color correction.", verified: true },
-      { name: "Adobe After Effects", description: "Kinetic typography, logo reveals, animated stickers, and smooth keyframing.", verified: true },
-      { name: "Video Editing", description: "Narrative pacing, B-roll integration, hook crafting, and visual flow.", verified: true },
-      { name: "Motion Graphics", description: "Dynamic lower-thirds, graphical overlays, and animated UI presentation clips.", verified: true },
-      { name: "Storytelling", description: "Script-to-screen structuring that maintains audience retention from start to finish.", verified: true },
-      { name: "Short-Form Video Production", description: "Vertical 9:16 reels, Shorts, and TikTok pacing optimized for algorithmic discovery.", verified: true }
-    ]
-  },
-  {
-    id: "ai",
-    label: "AI-Assisted Creativity",
-    icon: Sparkles,
-    description: "Harnessing cutting-edge generative tools to accelerate creative ideation, moodboarding, and asset generation.",
-    tools: [
-      { name: "Adobe Firefly", description: "Generative fill, texture expansion, and AI-assisted asset compositing.", verified: true },
-      { name: "Generative Ideation", description: "Prompt-driven concept exploration, visual moodboards, and style benchmarking.", verified: true },
-      { name: "AI Design Workflows", description: "Iterative image refinement and rapid variant generation to speed up production.", verified: true },
-      { name: "Image & Video Tools", description: "Leveraging generative video and visual models for experimental motion hooks.", verified: true }
-    ]
-  }
+const softwareSkills: SoftwareSkill[] = [
+  { name: "Adobe Photoshop", category: "Raster Craft & Retouching", level: 95, note: "Advanced image compositing, visual retouching, poster design, and asset finishing.", badge: "Verified 95%" },
+  { name: "Adobe Illustrator", category: "Vector & Identity Systems", level: 95, note: "Scalable vector marks, logotypes, custom typography, and complex iconography.", badge: "Verified 95%" },
+  { name: "Canva", category: "Social Systems & Rapid Kits", level: 100, note: "Modular social carousel systems, story templates, presentation decks, and collateral.", badge: "Verified 100%" },
+  { name: "Adobe Premiere Pro", category: "Video & Rhythm Editing", level: 90, note: "Timeline assembly, rhythm-based beat cutting, multi-track audio sync, and color grade.", badge: "Verified 90%" },
+  { name: "Adobe After Effects", category: "Motion Graphics & Kinetic Text", level: 90, note: "Kinetic motion typography, animated logo reveals, sticker loops, and transition curves.", badge: "Verified 90%" },
+  { name: "Figma", category: "UI/UX & Interactive Prototypes", level: 85, note: "Component libraries, Auto-Layout, design tokens, and clickable user flow prototypes.", badge: "Proficient" }
+];
+
+const designCompetencies = [
+  "Visual Communication",
+  "Typography Hierarchy",
+  "Brand Guidelines & Books",
+  "Poster & Print Layouts",
+  "Grid Systems & Baseline Rhythm",
+  "Color Theory & Harmonies",
+  "Short-Form Video Production",
+  "Kinetic Typography Animation",
+  "Social Media Architecture",
+  "Wireframing & Mobile UI",
+  "Packaging Label Systems",
+  "Pre-Press & CMYK Preparation"
+];
+
+const languages = [
+  { name: "English", proficiency: "Professional & Fluent Working Proficiency", native: false },
+  { name: "Hindi", proficiency: "Native & Bilingual Proficiency", native: true }
 ];
 
 export default function Skills() {
-  const [activeTab, setActiveTab] = useState("graphic");
-
-  const currentCategory = skillCategories.find((c) => c.id === activeTab) || skillCategories[0];
-
   return (
-    <section className="skills-section section-pad" id="skills" aria-label="Skills & Toolkit">
+    <section className="skills-section section-pad" id="skills" aria-label="Skills & Software Expertise">
       <div className="section-wrap">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">04 / PROFESSIONAL TOOLKIT</p>
+            <p className="eyebrow">04 / SOFTWARE &amp; EXPERTISE</p>
             <h2>
-              Tools are just
+              Verified software skills
               <br />
-              <em>the beginning.</em>
+              <em>&amp; creative toolkit.</em>
             </h2>
           </div>
           <p className="section-intro">
-            A genuine creative toolkit refined through practical execution. Only skills Avika actively practices and can demonstrate during an interview are listed.
+            Authentic software proficiencies and creative competencies verified directly from Avika&apos;s supplied resume. Every skill listed is actively practiced and demonstrable.
           </p>
         </div>
 
-        {/* Tab Buttons */}
-        <div className="skills-category-tabs" role="tablist">
-          {skillCategories.map((cat) => {
-            const Icon = cat.icon;
-            const isActive = activeTab === cat.id;
-            return (
-              <button
-                key={cat.id}
-                role="tab"
-                aria-selected={isActive}
-                className={`skill-tab-btn ${isActive ? "active" : ""}`}
-                onClick={() => setActiveTab(cat.id)}
-              >
-                <Icon size={16} />
-                <span>{cat.label}</span>
-                <span className="skill-tab-count">{cat.tools.length}</span>
-              </button>
-            );
-          })}
+        {/* Software Progress Grid with Verified Percentages */}
+        <div className="skills-software-grid">
+          {softwareSkills.map((tool) => (
+            <div className="software-skill-card" key={tool.name}>
+              <div className="software-card-header">
+                <div>
+                  <span className="software-cat-label">{tool.category}</span>
+                  <h3 className="software-name">{tool.name}</h3>
+                </div>
+                <span className="software-badge">{tool.badge}</span>
+              </div>
+
+              {/* Animated Progress Bar */}
+              <div className="skill-meter-track" aria-label={`${tool.name} proficiency: ${tool.level}%`}>
+                <div
+                  className="skill-meter-fill"
+                  style={{ width: `${tool.level}%` }}
+                />
+              </div>
+
+              <div className="software-card-footer">
+                <p className="software-note">{tool.note}</p>
+                <span className="software-percent">{tool.level}%</span>
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Active Category Display */}
-        <div className="skills-content-container">
-          <div className="skills-category-header">
-            <div>
-              <span className="skills-cat-eyebrow">ACTIVE DISCIPLINE</span>
-              <h3 className="skills-cat-title">{currentCategory.label}</h3>
+        {/* Two-Column Lower Grid: Core Design Competencies + Languages */}
+        <div className="skills-lower-grid">
+          {/* Design Competencies */}
+          <div className="competencies-card">
+            <div className="competency-header">
+              <Wrench size={18} />
+              <h3>Core Design Competencies</h3>
             </div>
-            <p className="skills-cat-description">{currentCategory.description}</p>
+            <p className="competency-intro">
+              Methodologies applied across independent creative projects, visual brand identities, and editorial storytelling:
+            </p>
+            <div className="competencies-tags-wrap">
+              {designCompetencies.map((comp) => (
+                <span key={comp} className="comp-tag">
+                  <Check size={11} /> {comp}
+                </span>
+              ))}
+            </div>
           </div>
 
-          <motion.div
-            key={currentCategory.id}
-            className="skills-cards-grid"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          >
-            {currentCategory.tools.map((tool, idx) => (
-              <div className="skill-card-item" key={tool.name}>
-                <div className="skill-card-top">
-                  <span className="skill-index-num">0{idx + 1}</span>
-                  <span className="skill-verified-badge" title="Verified Proficiency">
-                    <Check size={11} /> Verified
-                  </span>
+          {/* Spoken & Written Languages */}
+          <div className="languages-card">
+            <div className="competency-header">
+              <Globe size={18} />
+              <h3>Communication Languages</h3>
+            </div>
+            <p className="competency-intro">
+              Clear, disciplined collaboration across international teams and multicultural client briefs:
+            </p>
+            <div className="languages-list">
+              {languages.map((lang) => (
+                <div key={lang.name} className="language-row">
+                  <div className="lang-info">
+                    <h4>{lang.name}</h4>
+                    <p>{lang.proficiency}</p>
+                  </div>
+                  <span className="lang-badge">{lang.native ? "Native" : "Fluent"}</span>
                 </div>
-                <h4 className="skill-name">{tool.name}</h4>
-                <p className="skill-detail">{tool.description}</p>
-              </div>
-            ))}
-          </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-

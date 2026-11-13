@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Asterisk, Play, Palette, MonitorSmartphone, Layers, Sparkles } from "lucide-react";
+import { ArrowUpRight, Asterisk, Play, Layers, Maximize2 } from "lucide-react";
 import type { ProjectData } from "./CaseStudyModal";
 
 interface ProjectsProps {
@@ -13,9 +13,9 @@ export const allProjects: ProjectData[] = [
   {
     n: "01",
     title: "Lumina Botanicals",
-    subtitle: "Organic Skincare Brand World & Packaging Direction",
+    subtitle: "Organic Skincare Brand Identity & Packaging Suite",
     category: "Branding",
-    tags: ["Brand Identity", "Packaging", "Editorial", "Typography"],
+    tags: ["Branding", "Graphic Design", "Packaging", "Typography"],
     cover: "brand",
     year: "2026",
     status: "Concept Showcase",
@@ -25,7 +25,7 @@ export const allProjects: ProjectData[] = [
     overview:
       "A comprehensive brand identity exploration crafted for an organic skincare studio. The concept balances earthy minimalism with refined editorial typography to evoke sensory luxury without cold clinical sterility.",
     problem:
-      "Many natural wellness brands suffer from indistinguishable aesthetics — predominantly beige palettes and generic botanical line art. The goal was to build a distinct visual voice using deep botanical plum tones, high-contrast serif typography, and tactile structural packaging.",
+      "Natural beauty branding frequently suffers from aesthetic homogenization — predominantly bland beige hues and generic botanical line art. The goal was to build a distinct visual voice using deep botanical plum tones, high-contrast serif typography, and tactile packaging labels.",
     process: [
       {
         step: "Market & Aesthetic Research",
@@ -50,17 +50,17 @@ export const allProjects: ProjectData[] = [
       {
         caption: "Packaging Hierarchy & Box Label Typography",
         highlight: "MINIMAL / BOTANIC",
-        accent: "linear-gradient(135deg, #39283A, #914B65)"
+        accent: "linear-gradient(135deg, #25232A, #98556B)"
       },
       {
         caption: "Editorial Print Guideline & Color Swatches",
         highlight: "EARTH & WINE PALETTE",
-        accent: "linear-gradient(135deg, #914B65, #C77B8C)"
+        accent: "linear-gradient(135deg, #98556B, #D89AA9)"
       },
       {
         caption: "Social Launch Grid & Art-Directed Still Lifes",
         highlight: "CAMPAIGN ASSETS",
-        accent: "linear-gradient(135deg, #282329, #39283A)"
+        accent: "linear-gradient(135deg, #25232A, #EDE1D8)"
       }
     ],
     lessons: [
@@ -70,66 +70,124 @@ export const allProjects: ProjectData[] = [
   },
   {
     n: "02",
-    title: "Kavya Audio Experience",
-    subtitle: "Distraction-Free Ambient Sound & Journaling Mobile UI",
-    category: "UI/UX Design",
-    tags: ["UI/UX", "Figma", "Prototyping", "Design System"],
-    cover: "product",
+    title: "Aura Editorial Magazine",
+    subtitle: "High-Fashion Typographic Spread & Poster Layouts",
+    category: "Posters",
+    tags: ["Posters", "Graphic Design", "Editorial", "Typography"],
+    cover: "graphic",
     year: "2026",
     status: "Concept Showcase",
-    role: "Product & Interaction Designer",
-    duration: "3 Weeks Sprint",
-    tools: ["Figma", "FigJam", "Interactive Prototyping"],
+    role: "Editorial & Graphic Designer",
+    duration: "2 Weeks Study",
+    tools: ["Adobe InDesign", "Adobe Photoshop", "Adobe Illustrator"],
     overview:
-      "A focused mobile interface tailored for mindful audio listening, soundscapes, and reflective daily micro-journaling. Built around tactile controls and calm, low-cognitive-load screens.",
+      "An editorial design and poster series examining brutalist minimalism combined with classic serif grace for a high-fashion and culture publication.",
     problem:
-      "Modern streaming and meditation applications have become cluttered with algorithmic recommendations, promotional banners, and distracting badges that counteract their calming intent.",
+      "Editorial readers skim rapidly. The layout required a dynamic baseline rhythm that guides the eye through 2-page spreads without visual fatigue.",
     process: [
       {
-        step: "Information Architecture & Personas",
-        description: "Synthesized listening habits into 3 core user flows: quick single-tap soundscape launch, focused journal prompt entry, and sleep timer management."
+        step: "Grid Architecture",
+        description: "Constructed a 12-column baseline grid system allowing flexible column spans, oversized pull-quotes, and generous margins."
       },
       {
-        step: "Wireframing & Gestural Mapping",
-        description: "Prototyped full-bleed gestural interactions: horizontal swipes for sound layer cross-fading and tactile circular sliders for frequency adjustment."
+        step: "Typographic Contrast Testing",
+        description: "Paired dramatic Playfair Display italics with dense tabular mono labels to create visual tension and editorial poise."
       },
       {
-        step: "Component Design System",
-        description: "Constructed an atomic Figma library with 32 master components, WCAG AAA accessible high-contrast text, and soft ambient dark mode tokens."
+        step: "Image Juxtaposition",
+        description: "Balanced full-bleed duotone imagery against tight typographic text blocks and minimal geometric stamps."
       },
       {
-        step: "High-Fidelity Interactive Testing",
-        description: "Tested micro-interactions with users to calibrate feedback states, sound level scrubber friction, and transition ease curves."
+        step: "Pre-press & Digital Translation",
+        description: "Prepared print-ready PDF specifications with trim marks alongside a swipeable digital carousel edition."
       }
     ],
     outcome:
-      "A 14-screen clickable mobile app experience featuring customized ambient player controls, dark-room contrast optimization, and a lightweight micro-journaling interface.",
+      "An 8-page editorial spread series, exhibition poster, and companion social carousel demonstrating disciplined grid mastery and typographic courage.",
     gallery: [
       {
-        caption: "Main Player Interface with Frequency Layering",
-        highlight: "TACTILE SCRUBBER UI",
-        accent: "linear-gradient(135deg, #282329, #39283A)"
+        caption: "Feature Spread: Asymmetric Grid & Pull-Quote Rhythm",
+        highlight: "12-COLUMN BASELINE",
+        accent: "linear-gradient(135deg, #25232A, #D89AA9)"
       },
       {
-        caption: "Evening Reflection & Journal Prompt Screen",
-        highlight: "CALM DARK MODE",
-        accent: "linear-gradient(135deg, #39283A, #914B65)"
+        caption: "Cover & Poster Series: Dramatic Serif & Monogram",
+        highlight: "POSTER SERIES",
+        accent: "linear-gradient(135deg, #98556B, #25232A)"
       },
       {
-        caption: "Design Tokens & Reusable Interactive Atoms",
-        highlight: "ATOMIC FIGMA SYSTEM",
-        accent: "linear-gradient(135deg, #914B65, #C77B8C)"
+        caption: "Typographic Specimen & Margin Studies",
+        highlight: "TYPE SPECIMEN",
+        accent: "linear-gradient(135deg, #EDE1D8, #D89AA9)"
       }
     ],
     lessons: [
-      "Tactile visual feedback (soft glows and spring physics) makes screen-based audio controls feel tangible.",
-      "Limiting choices on the primary screen reduces decision anxiety for evening users."
+      "Rigid grids paradoxically allow the greatest creative freedom when broken with deliberate intent.",
+      "Micro-typography (tracking, optical kerning, and hanging punctuation) elevates good design into exceptional design."
     ]
   },
   {
     n: "03",
+    title: "Crafted Social Systems",
+    subtitle: "Modular Content Architecture for Creative Studios",
+    category: "Social Media",
+    tags: ["Social Media", "Graphic Design", "Canva", "Photoshop"],
+    cover: "brand",
+    year: "2026",
+    status: "Concept Showcase",
+    role: "Visual Content Designer",
+    duration: "2 Weeks System Build",
+    tools: ["Canva", "Adobe Photoshop", "Adobe Illustrator"],
+    overview:
+      "A modular social design architecture enabling creative agencies and boutique studios to maintain brand coherence across Instagram carousels, announcement stories, and Twitter graphics.",
+    problem:
+      "Creative agencies frequently struggle to maintain visual consistency across their own social channels due to rushed ad-hoc post creation without systematized templates.",
+    process: [
+      {
+        step: "Platform Asset Audit",
+        description: "Evaluated high-performing studio feeds to categorize post archetypes: case study spotlights, client reviews, thought leadership, and culture reels."
+      },
+      {
+        step: "Template Systemization",
+        description: "Built modular 1080x1350 vertical carousel slides with interchangeable header, body, quote, and statistical layout blocks in Canva and Photoshop."
+      },
+      {
+        step: "Color & Typography Locking",
+        description: "Created standardized color presets and typographic scales that team members can duplicate without breaking brand aesthetics."
+      },
+      {
+        step: "Export Optimization",
+        description: "Documented compression and export protocols for crisp vector-like text rendering on Instagram and LinkedIn feeds."
+      }
+    ],
+    outcome:
+      "A 24-slide modular carousel system, 12 animated story templates, and a visual brand guidelines one-pager for frictionless social publishing.",
+    gallery: [
+      {
+        caption: "Swipeable Carousel Slides with Narrative Progression",
+        highlight: "SWIPEABLE CAROUSEL",
+        accent: "linear-gradient(135deg, #98556B, #25232A)"
+      },
+      {
+        caption: "Quote Cards & Studio Announcement Formats",
+        highlight: "STORY TEMPLATES",
+        accent: "linear-gradient(135deg, #25232A, #EDE1D8)"
+      },
+      {
+        caption: "Modular Component Palette for Quick Production",
+        highlight: "CANVA & PS SYSTEM",
+        accent: "linear-gradient(135deg, #D89AA9, #98556B)"
+      }
+    ],
+    lessons: [
+      "Standardizing 3 core templates produces far better brand recognition than 20 divergent ad-hoc designs.",
+      "Clear visual hooks on slide 1 determine 80% of total carousel swipe completion."
+    ]
+  },
+  {
+    n: "04",
     title: "Kinetic Rhythm Studio",
-    subtitle: "Short-Form Video Direction & Dynamic Motion Systems",
+    subtitle: "Short-Form Video Direction & Kinetic Typography",
     category: "Video Editing",
     tags: ["Video Editing", "Motion Graphics", "Premiere Pro", "After Effects"],
     cover: "motion",
@@ -166,17 +224,17 @@ export const allProjects: ProjectData[] = [
       {
         caption: "Kinetic Typography & Frame Beat Synchronization",
         highlight: "BEAT-MATCHED CUTS",
-        accent: "linear-gradient(135deg, #914B65, #39283A)"
+        accent: "linear-gradient(135deg, #98556B, #25232A)"
       },
       {
         caption: "Color Balance & LUT Grading Pipeline",
         highlight: "BURGUNDY COLOR GRADE",
-        accent: "linear-gradient(135deg, #39283A, #282329)"
+        accent: "linear-gradient(135deg, #25232A, #D89AA9)"
       },
       {
         caption: "Modular Lower-Thirds & Social Overlay Kit",
         highlight: "AFTER EFFECTS PRESETS",
-        accent: "linear-gradient(135deg, #282329, #914B65)"
+        accent: "linear-gradient(135deg, #D89AA9, #25232A)"
       }
     ],
     lessons: [
@@ -185,127 +243,69 @@ export const allProjects: ProjectData[] = [
     ]
   },
   {
-    n: "04",
-    title: "Aura Editorial Magazine",
-    subtitle: "Experimental Typographic Layout & Print Spread Series",
-    category: "Graphic Design",
-    tags: ["Editorial", "Typography", "Poster Design", "Print"],
-    cover: "graphic",
-    year: "2026",
-    status: "Concept Showcase",
-    role: "Editorial & Graphic Designer",
-    duration: "2 Weeks Study",
-    tools: ["Adobe InDesign", "Adobe Photoshop", "Adobe Illustrator"],
-    overview:
-      "An editorial design and layout exploration examining modern brutalist minimalism combined with classic serif grace for a high-fashion and culture publication spread.",
-    problem:
-      "Digital readers skim content rapidly. The challenge was structuring editorial pages with compelling asymmetric hierarchy that slows readers down and encourages immersion.",
-    process: [
-      {
-        step: "Grid Architecture",
-        description: "Constructed a 12-column baseline grid system allowing flexible column spans, oversized pull-quotes, and generous margins."
-      },
-      {
-        step: "Typographic Contrast Testing",
-        description: "Paired dramatic Playfair Display italics with dense tabular mono labels to create visual tension and editorial poise."
-      },
-      {
-        step: "Image Juxtaposition",
-        description: "Balanced full-bleed duotone imagery against tight typographic text blocks and minimal geometric stamps."
-      },
-      {
-        step: "Pre-press & Digital Translation",
-        description: "Prepared print-ready PDF specifications with trim marks alongside a swipeable digital carousel edition."
-      }
-    ],
-    outcome:
-      "An 8-page editorial spread series, front cover concept, and companion social carousel that demonstrates disciplined grid mastery and typographic courage.",
-    gallery: [
-      {
-        caption: "Feature Spread: Asymmetric Grid & Pull-Quote Rhythm",
-        highlight: "12-COLUMN BASELINE",
-        accent: "linear-gradient(135deg, #39283A, #C77B8C)"
-      },
-      {
-        caption: "Cover Design: Dramatic Serif & Monogram Stamp",
-        highlight: "EDITORIAL COVER",
-        accent: "linear-gradient(135deg, #914B65, #39283A)"
-      },
-      {
-        caption: "Typographic Specimen & Margin Studies",
-        highlight: "TYPOGRAPHY SPECIMEN",
-        accent: "linear-gradient(135deg, #282329, #ECD0CD)"
-      }
-    ],
-    lessons: [
-      "Rigid grids paradoxically allow the greatest creative freedom when broken with deliberate intent.",
-      "Micro-typography (tracking, optical kerning, and hanging punctuation) elevates good design into exceptional design."
-    ]
-  },
-  {
     n: "05",
-    title: "Crafted Social Systems",
-    subtitle: "Modular Content Kits for Creative Agencies & Studios",
-    category: "Social Media Design",
-    tags: ["Social Media", "Canva", "Photoshop", "Content Strategy"],
-    cover: "brand",
+    title: "Kavya Audio Experience",
+    subtitle: "Distraction-Free Ambient Sound & Journaling Mobile UI",
+    category: "UI/UX",
+    tags: ["UI/UX", "Product Design", "Figma", "Design System"],
+    cover: "product",
     year: "2026",
     status: "Concept Showcase",
-    role: "Visual Content Designer",
-    duration: "2 Weeks System Build",
-    tools: ["Canva", "Adobe Photoshop", "Adobe Illustrator"],
+    role: "Product & Interaction Designer",
+    duration: "3 Weeks Sprint",
+    tools: ["Figma", "FigJam", "Interactive Prototyping"],
     overview:
-      "A modular social design architecture enabling creative agencies and boutique studios to maintain brand coherence across Instagram carousels, announcement stories, and Twitter graphics.",
+      "A focused mobile interface tailored for mindful audio listening, soundscapes, and reflective daily micro-journaling. Built around tactile controls and calm, low-cognitive-load screens.",
     problem:
-      "Creative agencies frequently struggle to maintain visual consistency across their own social channels due to rushed ad-hoc post creation without systematized templates.",
+      "Modern streaming applications are cluttered with algorithmic suggestions and promotional badges that counteract their calming intent.",
     process: [
       {
-        step: "Platform Asset Audit",
-        description: "Evaluated high-performing studio feeds to categorize post archetypes: case study spotlights, client reviews, thought leadership, and culture reels."
+        step: "Information Architecture & Personas",
+        description: "Synthesized listening habits into 3 core user flows: quick single-tap soundscape launch, focused journal prompt entry, and sleep timer management."
       },
       {
-        step: "Template Systemization",
-        description: "Built modular 1080x1350 vertical carousel slides with interchangeable header, body, quote, and statistical layout blocks in Canva and Photoshop."
+        step: "Wireframing & Gestural Mapping",
+        description: "Prototyped full-bleed gestural interactions: horizontal swipes for sound layer cross-fading and tactile circular sliders for frequency adjustment."
       },
       {
-        step: "Color & Typography Locking",
-        description: "Created standardized color presets and typographic scales that team members can duplicate without breaking brand aesthetics."
+        step: "Component Design System",
+        description: "Constructed an atomic Figma library with 32 master components, WCAG AAA accessible high-contrast text, and soft ambient dark mode tokens."
       },
       {
-        step: "Export Optimization",
-        description: "Documented compression and export protocols for crisp vector-like text rendering on Instagram and LinkedIn feeds."
+        step: "High-Fidelity Interactive Testing",
+        description: "Tested micro-interactions with users to calibrate feedback states, sound level scrubber friction, and transition ease curves."
       }
     ],
     outcome:
-      "A 24-slide modular carousel system, 12 animated story templates, and a visual brand guidelines one-pager for frictionless social publishing.",
+      "A 14-screen clickable mobile app experience featuring customized ambient player controls, dark-room contrast optimization, and a lightweight micro-journaling interface.",
     gallery: [
       {
-        caption: "Swipeable Carousel Slides with Narrative Progression",
-        highlight: "SWIPEABLE CAROUSEL",
-        accent: "linear-gradient(135deg, #914B65, #39283A)"
+        caption: "Main Player Interface with Frequency Layering",
+        highlight: "TACTILE SCRUBBER UI",
+        accent: "linear-gradient(135deg, #25232A, #98556B)"
       },
       {
-        caption: "Quote Cards & Studio Announcement Formats",
-        highlight: "STORY TEMPLATES",
-        accent: "linear-gradient(135deg, #39283A, #282329)"
+        caption: "Evening Reflection & Journal Prompt Screen",
+        highlight: "CALM DARK MODE",
+        accent: "linear-gradient(135deg, #98556B, #EDE1D8)"
       },
       {
-        caption: "Modular Component Palette for Quick Production",
-        highlight: "CANVA & PS SYSTEM",
-        accent: "linear-gradient(135deg, #282329, #C77B8C)"
+        caption: "Design Tokens & Reusable Interactive Atoms",
+        highlight: "ATOMIC FIGMA SYSTEM",
+        accent: "linear-gradient(135deg, #D89AA9, #25232A)"
       }
     ],
     lessons: [
-      "Standardizing 3 core templates produces far better brand recognition than 20 divergent ad-hoc designs.",
-      "Clear visual hooks on slide 1 determine 80% of total carousel swipe completion."
+      "Tactile visual feedback (soft glows and spring physics) makes screen-based audio controls feel tangible.",
+      "Limiting choices on the primary screen reduces decision anxiety for evening users."
     ]
   },
   {
     n: "06",
     title: "Verve Design System",
     subtitle: "Accessible Multi-Platform UI Component Framework",
-    category: "Product Design",
-    tags: ["UI/UX", "Product Design", "Figma", "Design Tokens"],
+    category: "Graphic Design",
+    tags: ["Graphic Design", "UI/UX", "Figma", "Design Tokens"],
     cover: "product",
     year: "2026",
     status: "Concept Showcase",
@@ -340,17 +340,17 @@ export const allProjects: ProjectData[] = [
       {
         caption: "Button & Input Component Variants with Focus States",
         highlight: "ATOMIC VARIANTS",
-        accent: "linear-gradient(135deg, #39283A, #914B65)"
+        accent: "linear-gradient(135deg, #25232A, #98556B)"
       },
       {
         caption: "Semantic Color Tokens & Contrast Verification",
         highlight: "WCAG AAA TOKENS",
-        accent: "linear-gradient(135deg, #282329, #39283A)"
+        accent: "linear-gradient(135deg, #98556B, #D89AA9)"
       },
       {
         caption: "Responsive Card & Navigation Layout Testing",
         highlight: "RESPONSIVE AUTO-LAYOUT",
-        accent: "linear-gradient(135deg, #914B65, #C77B8C)"
+        accent: "linear-gradient(135deg, #EDE1D8, #25232A)"
       }
     ],
     lessons: [
@@ -362,12 +362,12 @@ export const allProjects: ProjectData[] = [
 
 const categories = [
   "All",
-  "Graphic Design",
   "Branding",
-  "UI/UX Design",
-  "Product Design",
+  "Graphic Design",
+  "Social Media",
+  "Posters",
   "Video Editing",
-  "Social Media Design"
+  "UI/UX"
 ];
 
 function ProjectVisualArt({ type, title }: { type: string; title: string }) {
@@ -402,7 +402,7 @@ function ProjectVisualArt({ type, title }: { type: string; title: string }) {
             every day.
           </b>
           <small>Thoughtful things, made simple.</small>
-          <div className="phone-button">Explore Case Study ↗</div>
+          <div className="phone-button">Inspect Case Study ↗</div>
         </div>
         <div className="product-orbit" />
       </div>
@@ -468,13 +468,13 @@ export default function Projects({ onSelectProject }: ProjectsProps) {
         <div>
           <p className="eyebrow">01 / SELECTED PROJECTS &amp; CASE STUDIES</p>
           <h2>
-            A little of what
+            A collection of what
             <br />
             <em>I love making.</em>
           </h2>
         </div>
         <p className="section-intro">
-          A curated collection of deep-dive case studies spanning brand identity, digital product interfaces, editorial layouts, and motion storytelling. Click any project to inspect the full design process.
+          A dynamic gallery of visual case studies spanning brand identity, social content systems, editorial poster layouts, and motion storytelling. Click any project to open the full case study.
         </p>
       </div>
 
@@ -503,15 +503,10 @@ export default function Projects({ onSelectProject }: ProjectsProps) {
       {/* Projects Grid */}
       <motion.div layout className="project-grid">
         <AnimatePresence mode="popLayout">
-          {filtered.map((p, i) => (
-            <motion.article
+          {filtered.map((p) => (
+            <article
               className="project-card"
               key={p.n}
-              layout
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.45, delay: i * 0.05 }}
               onClick={() => onSelectProject(p)}
               tabIndex={0}
               role="button"
@@ -553,7 +548,7 @@ export default function Projects({ onSelectProject }: ProjectsProps) {
                   </span>
                 </div>
               </div>
-            </motion.article>
+            </article>
           ))}
         </AnimatePresence>
       </motion.div>
@@ -568,4 +563,3 @@ export default function Projects({ onSelectProject }: ProjectsProps) {
     </section>
   );
 }
-

@@ -1,62 +1,84 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, Compass, PenTool, CheckCircle, ArrowRight, Sparkles } from "lucide-react";
+import { Search, Compass, Lightbulb, PenTool, CheckCircle, Sparkles, RefreshCw, ArrowRight } from "lucide-react";
 
 const steps = [
   {
     num: "01",
-    title: "Discover",
-    tagline: "Understand the brief, users and creative objectives.",
+    title: "Understanding the Brief",
+    tagline: "Unpack core objectives, audience needs, and project scope.",
     icon: Search,
     points: [
-      "Unpack the core problem and project objectives through deep inquiry.",
-      "Identify audience expectations, emotional anchors, and market contexts.",
-      "Establish non-negotiables, accessibility baselines, and project deliverables."
+      "Deep dive into project goals, brand values, and required deliverables.",
+      "Define audience personas, emotional anchors, and technical constraints.",
+      "Establish milestone timelines and communicative touchpoints."
     ]
   },
   {
     num: "02",
-    title: "Explore",
-    tagline: "Research, brainstorm and develop visual directions.",
+    title: "Research & Inspiration",
+    tagline: "Explore visual culture, competitor landscapes, and moodboards.",
     icon: Compass,
     points: [
-      "Gather wide-ranging visual references, editorial artifacts, and layout studies.",
-      "Conduct rapid divergent sketches to explore contrasting typographic & structural moods.",
-      "Curate focused moodboards and define harmonious color stories."
+      "Gather diverse visual artifacts, editorial layouts, and design references.",
+      "Analyze aesthetic saturation points to identify distinctive opportunities.",
+      "Curate focused moodboards defining color harmony and typography pairings."
     ]
   },
   {
     num: "03",
-    title: "Design",
-    tagline: "Create, refine, prototype and test.",
-    icon: PenTool,
+    title: "Concept Development",
+    tagline: "Divergent sketching, typographic scales, and initial roughs.",
+    icon: Lightbulb,
     points: [
-      "Translate selected visual concepts into high-fidelity comps and interactive Figma prototypes.",
-      "Fine-tune typographic hierarchy, spacing rhythm, micro-interactions, and motion timing.",
-      "Incorporate constructive stakeholder feedback through iterative review cycles."
+      "Explore contrasting structural directions through rapid sketching.",
+      "Experiment with type contrast, optical weight, and layout rhythm.",
+      "Select the strongest 2–3 visual directions for high-fidelity execution."
     ]
   },
   {
     num: "04",
-    title: "Deliver",
-    tagline: "Prepare final assets and communicate the outcome.",
+    title: "Design & Execution",
+    tagline: "Translate ideas into high-fidelity compositions and motion.",
+    icon: PenTool,
+    points: [
+      "Craft pixel-perfect vector artwork, poster layouts, and motion cuts in Adobe Suite.",
+      "Build modular component structures in Figma and Canva for scalable use.",
+      "Fine-tune spacing, micro-interactions, sound cues, and color tolerances."
+    ]
+  },
+  {
+    num: "05",
+    title: "Feedback & Refinement",
+    tagline: "Iterative stakeholder review and rigorous detail polish.",
+    icon: RefreshCw,
+    points: [
+      "Synthesize constructive feedback without ego to sharpen clarity.",
+      "Audit legibility across multiple screen scales and print viewing distances.",
+      "Polish kerning, optical alignment, and transition ease curves."
+    ]
+  },
+  {
+    num: "06",
+    title: "Final Delivery",
+    tagline: "Production-ready master assets and documentation handoff.",
     icon: CheckCircle,
     points: [
-      "Prepare clean, organized, production-ready assets across print, web, and social formats.",
-      "Document brand guidelines, Figma design tokens, and developer implementation notes.",
-      "Perform quality checks to guarantee pixel-perfection and performance."
+      "Export print-ready CMYK PDFs, vector SVGs, and web-optimized media formats.",
+      "Package comprehensive brand guidelines, font specs, and asset libraries.",
+      "Provide clean documentation for effortless implementation."
     ]
   }
 ];
 
 export default function Process() {
   return (
-    <section className="process-section section-pad" id="process" aria-label="Design Process">
+    <section className="process-section section-pad" id="process" aria-label="Creative Methodology">
       <div className="section-wrap">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">05 / HOW I WORK</p>
+            <p className="eyebrow">05 / 6-STEP CREATIVE PROCESS</p>
             <h2>
               A structured path from
               <br />
@@ -64,23 +86,16 @@ export default function Process() {
             </h2>
           </div>
           <p className="section-intro">
-            Great creative work isn&apos;t accidental. It emerges from disciplined inquiry, divergent visual experimentation, and meticulous refinement at every stage.
+            Great visual design isn&apos;t accidental. It emerges from rigorous inquiry, fearless aesthetic exploration, and meticulous craftsmanship across six intentional stages.
           </p>
         </div>
 
-        {/* 4-Step Process Timeline Cards */}
-        <div className="process-grid">
+        {/* 6-Step Process Grid */}
+        <div className="process-grid process-grid-6">
           {steps.map((step, idx) => {
             const Icon = step.icon;
             return (
-              <motion.div
-                key={step.num}
-                className="process-card"
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-              >
+              <div key={step.num} className="process-card">
                 <div className="process-card-top">
                   <span className="process-card-num">{step.num}</span>
                   <div className="process-card-icon">
@@ -98,10 +113,10 @@ export default function Process() {
                 </ul>
 
                 <div className="process-card-footer">
-                  <span>PHASE {step.num}</span>
+                  <span>STAGE {step.num}</span>
                   {idx < steps.length - 1 ? <ArrowRight size={14} /> : <Sparkles size={14} />}
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
@@ -109,4 +124,3 @@ export default function Process() {
     </section>
   );
 }
-

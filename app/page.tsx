@@ -11,10 +11,13 @@ import Services from "./components/Services";
 import Skills from "./components/Skills";
 import Process from "./components/Process";
 import Experience from "./components/Experience";
+import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import AmbientCanvas from "./components/AmbientCanvas";
 import ResumeModal from "./components/ResumeModal";
+import ScrollProgress from "./components/ScrollProgress";
+import CustomCursor from "./components/CustomCursor";
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
@@ -22,6 +25,12 @@ export default function Home() {
 
   return (
     <main className="portfolio-root">
+      {/* Scroll Progress Bar at the top of the viewport */}
+      <ScrollProgress />
+
+      {/* Interactive Desktop Custom Cursor */}
+      <CustomCursor />
+
       {/* Background Subtle Particle Canvas */}
       <AmbientCanvas />
 
@@ -57,16 +66,19 @@ export default function Home() {
       {/* Services & Capabilities */}
       <Services />
 
-      {/* Professional Skills & Creative Toolkit */}
+      {/* Professional Skills & Verified Creative Toolkit */}
       <Skills />
 
-      {/* 4-Step Design Process Timeline */}
+      {/* 6-Step Creative Methodology Timeline */}
       <Process />
 
       {/* Experience & Education Verified Timeline */}
       <Experience />
 
-      {/* Contact Section */}
+      {/* Collaborative Endorsements & Peer Reviews */}
+      <Testimonials />
+
+      {/* Contact Section with Budget Selector */}
       <Contact />
 
       {/* Footer */}

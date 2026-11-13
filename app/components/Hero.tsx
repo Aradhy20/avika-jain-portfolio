@@ -2,17 +2,17 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
-import { ArrowDown, ArrowUpRight, Asterisk, Download, Send } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Asterisk, Download, Send, PenTool, Sparkles, Palette } from "lucide-react";
 
 interface HeroProps {
   onOpenResume: () => void;
 }
 
 const roles = [
-  "Graphic Designer",
+  "Graphic Designer & Visual Artist",
+  "Brand Identity Specialist",
   "UI/UX & Product Designer",
-  "Video & Motion Editor",
-  "Visual Brand Storyteller",
+  "Video Editor & Motion Designer",
 ];
 
 export default function Hero({ onOpenResume }: HeroProps) {
@@ -34,8 +34,12 @@ export default function Hero({ onOpenResume }: HeroProps) {
   const mouseY = useMotionValue(0);
 
   const springConfig = { damping: 25, stiffness: 180 };
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [7, -7]), springConfig);
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-7, 7]), springConfig);
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), springConfig);
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-6, 6]), springConfig);
+
+  // Parallax offsets for floating 3D creative objects
+  const floatObjX = useSpring(useTransform(mouseX, [-0.5, 0.5], [-18, 18]), springConfig);
+  const floatObjY = useSpring(useTransform(mouseY, [-0.5, 0.5], [-18, 18]), springConfig);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (reduceMotion || !cardRef.current) return;
@@ -51,6 +55,10 @@ export default function Hero({ onOpenResume }: HeroProps) {
     mouseY.set(0);
   };
 
+  // Letter array for letter-by-letter typographic animation
+  const firstNameLetters = ["A", "v", "i", "k", "a"];
+  const surnameLetters = ["J", "a", "i", "n"];
+
   return (
     <section className="hero section-wrap" id="top" aria-label="Hero Introduction">
       <div className="hero-left">
@@ -63,16 +71,25 @@ export default function Hero({ onOpenResume }: HeroProps) {
 
         {/* Eyebrow */}
         <p className="eyebrow hero-eyebrow">
-          INDEPENDENT CREATIVE / MORADABAD, INDIA
+          GRAPHIC DESIGNER &amp; CREATIVE VISUAL ARTIST · MORADABAD, INDIA
         </p>
 
-        {/* Main Staggered Headline */}
-        <h1 className="hero-heading">
+        {/* Main Letter-by-Letter Animated Headline */}
+        <h1 className="hero-heading" aria-label="Avika Jain">
           <span className="hero-firstname">
-            Avika
+            {firstNameLetters.map((char, i) => (
+              <span key={i} className="letter-span">
+                {char}
+              </span>
+            ))}
           </span>
           <span className="hero-surname">
-            Jain<span className="hero-period">.</span>
+            {surnameLetters.map((char, i) => (
+              <span key={i} className="letter-span">
+                {char}
+              </span>
+            ))}
+            <span className="hero-period">.</span>
           </span>
         </h1>
 
@@ -96,24 +113,24 @@ export default function Hero({ onOpenResume }: HeroProps) {
 
         {/* Introduction Copy */}
         <p className="hero-copy">
-          I transform ideas into meaningful visual experiences through graphic design, digital products, branding and motion.
+          I transform ideas into meaningful visual experiences through graphic design, brand identities, editorial layouts and motion storytelling.
         </p>
 
-        {/* CTA Buttons */}
+        {/* 3 CTA Buttons */}
         <div className="hero-actions">
-          <a className="button button-dark" href="#work">
+          <a className="button button-dark magnetic-target" href="#work">
             <span>Explore My Work</span> <ArrowUpRight size={16} />
           </a>
           <button
             type="button"
             onClick={onOpenResume}
-            className="button button-outline"
+            className="button button-outline magnetic-target"
             aria-label="Download or view verified resume"
           >
-            <Download size={15} /> <span>Download My Resume</span>
+            <Download size={15} /> <span>Download CV</span>
           </button>
-          <a className="text-link" href="#contact">
-            <span>Let&apos;s Collaborate</span> <Send size={14} />
+          <a className="button button-beige magnetic-target" href="#contact">
+            <span>Contact Me</span> <Send size={14} />
           </a>
         </div>
 
@@ -126,11 +143,11 @@ export default function Hero({ onOpenResume }: HeroProps) {
           >
             <ArrowDown size={14} />
           </motion.div>
-          <span className="hero-index">01 — 06</span>
+          <span className="hero-index">01 — 08</span>
         </div>
       </div>
 
-      {/* Hero Visual Area with 3D Tilt Portrait & Floating Toolkit */}
+      {/* Hero Visual Area with 3D Tilt Portrait & Floating 3D Objects */}
       <div
         className="hero-visual"
         ref={cardRef}
@@ -141,6 +158,26 @@ export default function Hero({ onOpenResume }: HeroProps) {
         <div className="hero-orbit orbit-one" aria-hidden="true" />
         <div className="hero-orbit orbit-two" aria-hidden="true" />
 
+        {/* Floating 3D Creative Scene Elements */}
+        <motion.div
+          className="floating-3d-object obj-pen"
+          style={reduceMotion ? {} : { x: floatObjX, y: floatObjY }}
+          aria-hidden="true"
+        >
+          <div className="creative-obj-box">
+            <PenTool size={16} />
+            <span>Vector Pen</span>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="floating-3d-object obj-geometry"
+          style={reduceMotion ? {} : { x: floatObjY, y: floatObjX }}
+          aria-hidden="true"
+        >
+          <div className="creative-shape-disc" />
+        </motion.div>
+
         {/* 3D Tilted Portrait Card */}
         <motion.div
           className="portrait-frame"
@@ -150,7 +187,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
             {/* Real verified portrait artwork of Avika Jain */}
             <img
               src="/avika-showcase.jpg"
-              alt="Avika Jain — Graphic Designer, UI/UX & Product Designer, Video Editor"
+              alt="Avika Jain — Graphic Designer & Creative Visual Artist"
               loading="eager"
               onError={(e) => {
                 const target = e.currentTarget;
@@ -191,7 +228,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
           animate={reduceMotion ? {} : { y: [0, -7, 0], rotate: [-4, -1, -4] }}
           transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <span>✳</span> IDEA TO IMAGE
+          <span>✳</span> VISUAL STORIES
         </motion.div>
 
         <motion.div
@@ -208,13 +245,13 @@ export default function Hero({ onOpenResume }: HeroProps) {
           animate={reduceMotion ? {} : { y: [0, -5, 0] }}
           transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
         >
-          <span className="tool-dot ps" /> PS · AI · FIGMA · PR
+          <span className="tool-dot ps" /> PS · AI · CANVA · PR · AE
         </motion.div>
 
         {/* Visual Caption */}
         <div className="visual-caption">
           <span>FIG. 001</span>
-          <span>THE CREATIVE MIND</span>
+          <span>THE CREATIVE ARTIST</span>
         </div>
       </div>
     </section>
