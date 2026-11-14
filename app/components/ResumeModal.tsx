@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Download, Printer, Mail, Send, Check, ExternalLink, Sparkles } from "lucide-react";
+import { X, Download, Printer, Mail, Send, Check, ExternalLink, Sparkles, Linkedin } from "lucide-react";
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -121,6 +121,9 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                   </a>
                   <a href="https://wa.me/917302415626" target="_blank" rel="noreferrer" className="resume-contact-link">
                     <Send size={13} /> +91 73024 15626
+                  </a>
+                  <a href="https://www.linkedin.com/in/avika-jain-890167397/" target="_blank" rel="noreferrer" className="resume-contact-link">
+                    <Linkedin size={13} /> linkedin.com/in/avika-jain-890167397
                   </a>
                   <button type="button" onClick={copyEmail} className="resume-copy-btn">
                     {copied ? <Check size={12} /> : null} {copied ? "Copied" : "Copy email address"}

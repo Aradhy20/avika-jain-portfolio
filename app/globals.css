@@ -2104,10 +2104,35 @@ button {
   color: #8C7E86;
 }
 
-.footer-location {
+.footer-center {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font: 600 10px var(--mono);
   letter-spacing: 1px;
   color: var(--wine);
+  transition: color 0.2s ease;
+}
+
+.footer-social-link:hover {
+  color: var(--plum);
+}
+
+.footer-dot {
+  color: var(--line);
+  font-size: 10px;
+}
+
+.footer-location {
+  font: 600 10px var(--mono);
+  letter-spacing: 1px;
+  color: #8C7E86;
 }
 
 .footer-right {

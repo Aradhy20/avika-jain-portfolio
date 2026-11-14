@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Menu, X, FileText, Send, Mail } from "lucide-react";
+import { ArrowUpRight, Menu, X, FileText, Send, Mail, Linkedin } from "lucide-react";
 
 interface HeaderProps {
   onOpenResume: () => void;
@@ -129,6 +129,9 @@ export default function Header({ onOpenResume }: HeaderProps) {
                   </a>
                   <a href="https://wa.me/917302415626" target="_blank" rel="noreferrer">
                     <Send size={14} /> +91 73024 15626
+                  </a>
+                  <a href="https://www.linkedin.com/in/avika-jain-890167397/" target="_blank" rel="noreferrer">
+                    <Linkedin size={14} /> LinkedIn Profile
                   </a>
                 </div>
               </div>

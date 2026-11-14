@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Linkedin } from "lucide-react";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -19,6 +19,16 @@ export default function Footer() {
       </div>
 
       <div className="footer-center">
+        <a
+          href="https://www.linkedin.com/in/avika-jain-890167397/"
+          target="_blank"
+          rel="noreferrer"
+          className="footer-social-link"
+          aria-label="Avika Jain on LinkedIn"
+        >
+          <Linkedin size={13} /> <span>LinkedIn Profile</span> <ArrowUpRight size={11} />
+        </a>
+        <span className="footer-dot">•</span>
         <span className="footer-location">MORADABAD, INDIA · AVAILABLE 2026</span>
       </div>
 
@@ -38,4 +48,3 @@ export default function Footer() {
     </footer>
   );
 }
-

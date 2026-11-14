@@ -32,7 +32,7 @@ export default function StructuredData() {
         ],
         "sameAs": [
           "https://github.com/Aradhy20/avika-jain-portfolio",
-          "https://www.linkedin.com/in/avika-jain-designer",
+          "https://www.linkedin.com/in/avika-jain-890167397/",
           "https://www.behance.net/avikajain"
         ]
       },

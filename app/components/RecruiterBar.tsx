@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, Download, FileText, Send, Sparkles, UserCheck, Briefcase } from "lucide-react";
+import { Check, Copy, Download, FileText, Send, Sparkles, UserCheck, Briefcase, Linkedin } from "lucide-react";
 
 interface RecruiterBarProps {
   onOpenResume: () => void;
@@ -50,6 +50,16 @@ export default function RecruiterBar({ onOpenResume }: RecruiterBarProps) {
             className="recruiter-btn"
           >
             <Send size={14} /> <span>Quick WhatsApp</span>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/avika-jain-890167397/"
+            target="_blank"
+            rel="noreferrer"
+            className="recruiter-btn"
+            title="Connect on LinkedIn"
+          >
+            <Linkedin size={14} /> <span>LinkedIn</span>
           </a>
 
           <button

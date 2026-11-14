@@ -134,7 +134,7 @@ export default function Contact() {
             <span className="socials-label">VERIFIED PROFILES</span>
             <div className="socials">
               <a
-                href="https://www.linkedin.com/in/avika-jain-designer"
+                href="https://www.linkedin.com/in/avika-jain-890167397/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn Profile"
